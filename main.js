@@ -13,17 +13,28 @@ define([
 
                 url = "http://httpbin.org/post"
             
-                response = requests.post(url, files = {"form_field_name": file})
+                response = requests.post(url, files = {"file": file})
             
                 if response.ok:
-                    print("Upload completed successfully!")
-                    print(response.text)
+                    print("Success")
                 else:
-                    print("Something went wrong!")
+                    print("Failure")
             `);
             Jupyter.notebook.select_prev();
             Jupyter.notebook.execute_cell();
-            //Jupyter.notebook.delete_cell();
+            var output = ""
+            var checkExist = setInterval(function() {
+                if (Jupyter.notebook.get_selected_cell().output_area.outputs.length) {
+                    clearInterval(checkExist);
+                    output = Jupyter.notebook.get_selected_cell().output_area.outputs[0].text
+                    Jupyter.notebook.delete_cell();
+                    if (output.trim() === "Success") {
+                        alert("Notebook submitted!");
+                    } else {
+                        alert("Something went wrong!");
+                    }
+                }
+            }, 100);
         };
 
         var action = {
