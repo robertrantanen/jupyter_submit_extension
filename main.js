@@ -31,7 +31,7 @@ define([
                     if (output.trim() === "Success") {
                         setTimeout(function() { alert("Notebook submitted!"); }, 10);
                     } else {
-                        setTimeout(function() { alert("Notebook submitted!"); }, 10);
+                        setTimeout(function() { alert("Something went wrong!"); }, 10);
                     }
                 }
             }, 10);
