@@ -9,11 +9,14 @@ define([
             var filename = Jupyter.notebook.notebook_name
             Jupyter.notebook.insert_cell_above('code').set_text(`
                 import requests
+                
                 file = open("${filename}", "rb")
 
                 url = "http://httpbin.org/post"
+
+                headers = {'Content-type': 'application/json'}
             
-                response = requests.post(url, files = {"file": file})
+                response = requests.post(url, data=file, headers=headers)
             
                 if response.ok:
                     print("Success")
