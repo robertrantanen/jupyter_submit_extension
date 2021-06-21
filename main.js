@@ -29,16 +29,16 @@ define([
                     output = Jupyter.notebook.get_selected_cell().output_area.outputs[0].text
                     Jupyter.notebook.delete_cell();
                     if (output.trim() === "Success") {
-                        alert("Notebook submitted!");
+                        setTimeout(function() { alert("Notebook submitted!"); }, 10);
                     } else {
-                        alert("Something went wrong!");
+                        setTimeout(function() { alert("Notebook submitted!"); }, 10);
                     }
                 }
-            }, 100);
+            }, 10);
         };
 
         var action = {
-            icon: 'fa-comment-o',
+            icon: 'fa-upload',
             help: 'submit-notebook',
             help_index: 'zz',
             handler: handler
